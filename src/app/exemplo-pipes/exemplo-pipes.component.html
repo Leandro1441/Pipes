@@ -7,6 +7,27 @@
 <p>Preço: {{livro.preco | currency:'BRL':true}}</p>
 <p>Data lançamento: {{livro.dataLancamento | date:'dd-MMMM-yyyy'}} </p>
 <p>Url: {{livro.url}}</p>
-<br>
-<p>Livro: {{livro | json}}</p>
+<hr>
+<!--<p>Livro: {{livro | json}}</p>-->
+<p>Novo curso</p>
+<input type="text" #novoCurso>
+<button (click)="addCursos(novoCurso.value)">adicionar curso</button>
+
+<h3>Pesquisar cursos</h3>
+<p>Pipe puro</p>
+<input type="text"[(ngModel)]="filtro">
+<ul>
+    <li *ngFor="let liv of livros | filtroArray: filtro">
+        {{ liv }}
+    </li>
+</ul>
+
+<h5>Pipe Impuro</h5>
+
+<ul>
+    <li *ngFor="let liv of livros | filtroArrayImpuro: filtro">
+        {{ liv }}
+    </li>
+</ul>
+
 
